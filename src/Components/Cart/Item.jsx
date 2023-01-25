@@ -5,6 +5,7 @@ const select = [1, 2, 3, 4, 5]
 function Item({e, i, setCart, cart}) {
     const [show, setShow] = useState(false)
     
+    /* triggers when qty selected */
     const handlePlus = (index, value) => {
         let data = [...cart];
         data[index].qty = value || 1

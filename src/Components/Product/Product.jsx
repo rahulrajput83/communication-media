@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import { BsHeart, BsHeartFill } from 'react-icons/bs';
+import { useNavigate, useParams } from 'react-router-dom';
 import './Product.css'
 
 function Product(props) {
+    const navigate = useNavigate()
     const { id } = useParams();
     const [data, setData] = useState({})
-    const [likeData, setLikeData] = useState({})
+    const [like, setLike] = useState(false)
     const [img, setImg] = useState('')
 
+
+    /* Fetch single product details */
     useEffect(() => {
         fetch(`https://dummyjson.com/products/${id}`)
             .then(res => res.json())
@@ -20,22 +24,22 @@ function Product(props) {
             })
     }, [id, props])
 
-    /*  useEffect(() => {
-         if(data) {
-             if ('data' in props) {
-                 let findLike = props.data.find(item => item.title == data.title);
-                 if (!('like' in findLike)) {
-                     findLike = { ...findLike, like: false }
-                 }
-                 setLikeData(findLike)
-             }
-         }
-     }, [props, id, data]) */
+    /* useEffect to check like stutus */
+
     useEffect(() => {
-        console.log(likeData)
-    }, [likeData])
-
-
+        if(props.data.length <= 0) {
+            navigate('/')
+        }
+        else {
+            const index = [...props.data].findIndex(e => e.id == id);
+        if(props.data[index].like) {
+            setLike(true)
+        }
+        else{
+            setLike(false)
+        }
+        }
+    }, [props, id, navigate])
 
     return data ?
         <>
@@ -45,7 +49,7 @@ function Product(props) {
                     <span className='title'>{data.title}</span>
                     <span className='category'>{data.category}</span>
                     <span className='desc'>{data.description}</span>
-                    {/* {likeData && likeData.like ? <BsHeartFill onClick={() => props.handleLike(likeData)} className='like' /> : <BsHeart onClick={() => props.handleLike(likeData)} className='like' />} */}
+                    {like ? <BsHeartFill onClick={() => props.handleLike(data)} className='like' /> : <BsHeart onClick={() => props.handleLike(data)} className='like' />}
                     <div className='cartRow'>
                         <button onClick={() => props.handleCart(data)}>Add to Cart</button>
                         <span className='price'>${data.price}</span>

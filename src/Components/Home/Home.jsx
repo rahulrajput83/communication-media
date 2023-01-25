@@ -4,7 +4,7 @@ import LinesEllipsis from 'react-lines-ellipsis'
 import responsiveHOC from 'react-lines-ellipsis/lib/responsiveHOC'
 import Rating from './Rating'
 import { Link } from 'react-router-dom'
-import { BsStar, BsStarFill } from 'react-icons/bs'
+import { BsHeart, BsHeartFill,} from 'react-icons/bs'
 
 const ResponsiveEllipsis = responsiveHOC()(LinesEllipsis)
 
@@ -23,7 +23,7 @@ function Home({ data, handleLike, handleCart }) {
                         </Link>
                         <div className='line'></div>
                         <div className='right'>
-                            {e.like ? <BsStarFill className='like' onClick={() => handleLike(e)} /> : <BsStar className='like' onClick={() => handleLike(e)} />}
+                            {e.like ? <BsHeartFill className='like' onClick={() => handleLike(e)} /> : <BsHeart className='like' onClick={() => handleLike(e)} />}
                             <Link to={`/${e.id}`} className='title'>{e.title}</Link>
                             <Link to={`/${e.id}`} className='category'>{e.category}</Link>
                             <Link to={`/${e.id}`} className='price'>${e.price}</Link>

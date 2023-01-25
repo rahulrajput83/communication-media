@@ -38,21 +38,23 @@ function App() {
     console.log(title)
     const index = data.findIndex((e) => e.title === title);
     let likeData = [...data]
-    if(likeData[index].like) {
-      likeData[index].like  = false;
+    if (likeData[index].like) {
+      likeData[index].like = false;
     }
     else {
-      likeData[index].like  = true;
+      likeData[index].like = true;
     }
     setData(likeData)
   }
 
   return (
     <BrowserRouter>
+      {/* Routes for the application */}
+      <Navbar cart={cart} />
       <Routes>
-        <Route path='/' element={<><Navbar cart={cart} /><Home data={data} handleLike={handleLike} handleCart={handleCart} cart={cart} /></>} />
-        <Route path='/:id' element={<><Navbar cart={cart} /><Product handleLike={handleLike} handleCart={handleCart} data={data} /></>} />
-        <Route path='/cart' element={<><Navbar cart={cart} /><Cart cart={cart} setCart={setCart} /></>} />
+        <Route path='/' element={<Home data={data} handleLike={handleLike} handleCart={handleCart} cart={cart} />} />
+        <Route path='/:id' element={<Product handleLike={handleLike} handleCart={handleCart} data={data} />} />
+        <Route path='/cart' element={<Cart cart={cart} setCart={setCart} />} />
       </Routes>
     </BrowserRouter>
   );
