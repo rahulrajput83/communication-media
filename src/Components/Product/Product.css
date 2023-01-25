@@ -1,0 +1,103 @@
+.Product {
+    display: flex;
+    flex-direction: row;
+    background: #eeeeee;
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 99%;
+    height: 40%;
+    background: white;
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.1);
+}
+
+.Product img {
+    width: 40%;
+    height: 100%;
+}
+
+.Product .right {
+    padding: 0.5rem 0.7rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.Product .like {
+    position: absolute;
+    right: 1%;
+}
+
+.Product .right .title {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.Product .right .category {
+    font-size: 0.9rem;
+    text-transform: capitalize;
+    color: rgb(77, 76, 76);
+}
+.Product .right .desc {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: rgb(77, 76, 76);
+}
+
+.Product .right .price {
+    color: #49c4e9;
+    font-weight: 500;
+    font-size: 1.2rem;
+    margin-left: auto;
+    position: absolute;
+    right: 1%;
+}
+
+.Product .right .cartRow {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    width: 100%;
+}
+
+.Product .right .cartRow button {
+    padding: 0.6rem;
+    background: #5cb85c;
+    border: 0;
+    border-radius: 0.25rem;
+    color: #fff;
+    cursor: pointer;
+    margin-right: auto;
+}
+
+.Images {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    top: 140%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 99%;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.Images img {
+    width: 15%;
+}
+
+@media (min-width: 800px) {
+    .Product {
+        width: 50%;
+    }
+    .Images {
+        width: 50%;
+        margin: auto;
+    }
+    .Images img {
+        width: 40%;
+    }
+}
